@@ -4,7 +4,10 @@ import java.util.List;
 public class ProcessadorDeInvestimentos {
 	public static void main(String[] ags) {
 		for(ContaComum conta : contasDoBanco()) {
-			conta.rende();
+			if (!(conta instanceof ContaDeEstudante)) {
+				conta.rende();
+			}
+			
 			
 			System.out.println("Novo Saldo:");
 			System.out.println(conta.getSaldo());
