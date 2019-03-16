@@ -1,25 +1,28 @@
 
 public class ContaComum {
-	protected double saldo;
+
+	private ManipuladorDeSaldo manipulador;
 	
 	public ContaComum() {
-		this.saldo = 0;
+		this.manipulador = new ManipuladorDeSaldo();
 	}
 	public void deposita(double valor) {
 		if(valor <= 0)
 			throw new ValorInvalidoException();
 		
-		this.saldo +=valor;
+		this.manipulador.adiciona(valor);;
 	}
-	public double getSaldo() {
-		return saldo;
+	public void rende() {
+		this.manipulador.juros(0.1);
 	}
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
+	public void saca(double valor) {
+		manipulador.adiciona(valor);
 	}
 	
-	public void rende() {
-		this.saldo *= 1.1;
+	public double getSaldo() {
+		return manipulador.getSaldo();
 	}
+	
+	
 	
 }

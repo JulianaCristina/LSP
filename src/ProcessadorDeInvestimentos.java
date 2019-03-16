@@ -3,19 +3,15 @@ import java.util.List;
 
 public class ProcessadorDeInvestimentos {
 	public static void main(String[] ags) {
-		for(ContaComum conta : contasDoBanco()) {
-			if (!(conta instanceof ContaDeEstudante)) {
-				conta.rende();
-			}
+		for(Rentavel conta : contasDoBanco()) {
+			conta.rende();			
+			System.out.println("Novo Saldo:"+ conta.getSaldo());
 			
-			
-			System.out.println("Novo Saldo:");
-			System.out.println(conta.getSaldo());
 		}
 	}
 
-	private static List<ContaComum> contasDoBanco() {
+	private static List<Rentavel>contasDoBanco() {
 		
-		return Arrays.asList(new ContaComum(), new ContaDeEstudante());
+		return Arrays.asList(new ContaComum(), new ContaComum());
 	}
 }
